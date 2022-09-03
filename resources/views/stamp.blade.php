@@ -20,18 +20,26 @@
   @endcomponent
   <div class="stamps">
     <form method="post" action="/work/add">
-      <input type="hidden" name="start_at">
-      <button type="submit">勤務開始</button>
+      @csrf
+      <input type="submit"  value="勤務開始">
     </form>
+    @if(isset($item))
     <form method="post" action="work/update">
-      <input type="hidden" name="end_at">
+      @csrf
+      <input type="hidden" name="id" value="{{$item->id}}">
+      
       <input type="button" name="end_at" value="勤務終了">
     <form method="post" action="rest/add">
+      @csrf
+      <input type="hidden" name="work_id" value="{{$item->id}}">
       <input type="button" name="start_at" value="休憩開始">
     </form>
     <form method="post" aciton="rest/update">
+      @csrf
+      <input type="hidden" name="work_id" value="{{$item->id}}">
       <input type="button" name="end_at" value="休憩終了">
     </form>
+    @endif
   </div>
   @component('components.footer')
   @endcomponent

@@ -13,7 +13,7 @@ use App\Http\Controllers\WorkController;
 |
 */
 
-Route::get('/', [WorkController::class,'index']);
+Route::get('/', [WorkController::class,'index'])->name('index');
 Route::post('/work/add',[WorkController::class,'add']);
 Route::post('work/update',[WorkController::class,'update']);
 Route::post('rest/add',[WorkController::class,'rest_add']);
