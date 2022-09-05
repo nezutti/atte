@@ -11,15 +11,16 @@ use Illuminate\Http\RedirectResponse;
 class WorkController extends Controller
 {
     public function index(){
-        
-        return view('stamp');
+        $item=Work::latest()->first();
+        return view('stamp',['item'=>$item]);
     }
 
     public function add(){
         $date=Carbon::now();
         Work::create(['start_at'=>$date]);
-        $item=Work::latest()->first();
-        return redirect()->route('index')->with(['item'=>$item]);
+       
+        return redirect('/');
+        
         
     }
 
