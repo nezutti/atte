@@ -21,25 +21,43 @@
   <div class="stamps">
     <form method="post" action="/work/add">
       @csrf
-      <input type="submit" id="workstart" value="勤務開始" onclick="clickBtn1()">
+      @if(!isset($is_attendance_start))
+      <a href="/work/add" class="attendance-btn">勤務開始</a>
+      
+      @else
+      <p class="attendance-btn inactive">勤務開始</P>
+      @endif
     </form>
-    @if(isset($item))
+    
     <form method="post" action="work/update">
       @csrf
       <input type="hidden" name="id" value="{{$item->id}}">
-      
-      <input type="submit" id="workend"  name="end_at" value="勤務終了" disabled>
+      @if(!isset($is_attendance_end))
+      <a href="/work/update" type="submit" id="workend"  name="end_at">勤務終了</a>
+      @else
+      <p class="attendance-btn inactive">勤務終了</p>
+      @endif
+    </form>
     <form method="post" action="rest/add">
       @csrf
       <input type="hidden" name="work_id" value="{{$item->id}}">
-      <input type="submit"  id="reststart" name="start_at" value="休憩開始" disabled>
+      @if(!isset($is_rest_start))
+      <a href="/rest/add" class="attendance-btn"  id="reststart" name="start_at">休憩開始</a>
+      @elseif
+      <p class="attendance-btn inactive">休憩開始</P>
+      @endif
     </form>
     <form method="post" aciton="rest/update">
       @csrf
       <input type="hidden" name="work_id" value="{{$item->id}}">
-      <input type="submit" id="restend" name="end_at" value="休憩終了" disabled>
+      @if(!isset($is_rest_end))
+      <a href="/rest/end" class="attendance-btn"  id="reststart" name="end_at">休憩開始</a>
+      @elseif
+      <p class="attendance-btn inactive">休憩開始</P>
+      @endif
+      
     </form>
-    @endif
+    
   </div>
   @component('components.footer')
   @endcomponent

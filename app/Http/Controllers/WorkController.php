@@ -12,6 +12,10 @@ class WorkController extends Controller
 {
     public function index(){
         $item=Work::latest()->first();
+        $is_attendance_start=$item->startのデータが存在するとき
+        $is_attendance_end=$item->
+        $is_rest_start=
+        $is_rest_end=
         return view('stamp',['item'=>$item]);
     }
 

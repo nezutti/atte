@@ -14,7 +14,7 @@ use App\Http\Controllers\WorkController;
 */
 
 Route::get('/', [WorkController::class,'index'])->name('index');
-Route::post('/work/add',[WorkController::class,'add']);
+Route::get('/work/add',[WorkController::class,'add']);
 Route::post('work/update',[WorkController::class,'update']);
 Route::post('rest/add',[WorkController::class,'rest_add']);
 Route::post('rest/update',[WorkController::class,'rest_update']);
