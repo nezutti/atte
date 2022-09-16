@@ -12,11 +12,12 @@ class WorkController extends Controller
 {
     public function index(){
         $item=Work::latest()->first();
-        $is_attendance_start=$item->startのデータが存在するとき
-        $is_attendance_end=$item->
-        $is_rest_start=
-        $is_rest_end=
-        return view('stamp',['item'=>$item]);
+        $is_attendance_start=Work::whereDate('created_at',Carbon::today())->exists();
+        $is_attendance_end=Work::where('start_at',Carbon::today())->where('end')
+        $is_rest_start=Work::where('start_at',Carbon::today())-
+        $is_rest_end=Rest::where('start_at',Carbon::today())->where('end_at','')->exists();
+        $items=['item'=>$item,'is_attendance_start'=> $is_attendance_start,'is_attendance_end'=>$is_attendance_end,'is_rest_start'=> $is_rest_start',is_rest_end'=>$is_rest_end]
+        return view('stamp',$items);
     }
 
     public function add(){
@@ -25,7 +26,7 @@ class WorkController extends Controller
        
         return redirect('/');
         
-        
+        restが押されててendが押されてない状態
     }
 
     public function update(){
