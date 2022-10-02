@@ -18,7 +18,7 @@ Route::get('/work/add',[WorkController::class,'add']);
 Route::post('work/update',[WorkController::class,'update']);
 Route::get('rest/add',[WorkController::class,'addRest']);
 Route::post('rest/update',[WorkController::class,'updateRest']);
-Route::get('/attendance/{}')
+Route::get('/attendance',[WorkController::class,'date']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
