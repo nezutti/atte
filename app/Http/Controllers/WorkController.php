@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 class WorkController extends Controller
 {
     public function index(){
-        $item=Work::latest()->first();
+        $item=Work::with('rests')->latest()->first();
         $is_attendance_start=Work::whereDate('created_at',Carbon::today())->exists();
         $is_rest_end=Rest::where('start_at',Carbon::today())->where('end_at','')->exists();
         $items=['item'=>$item,'is_attendance_start'=> $is_attendance_start,'is_rest_end'=>$is_rest_end];
@@ -36,7 +36,7 @@ class WorkController extends Controller
         $date=Carbon::now();
         Rest::create(['start_at'=>$date]);
         
-        return view('stamp');
+        return redirect('/');
 
     }
 
@@ -44,5 +44,9 @@ class WorkController extends Controller
         $date=Carbon::now();
         Rest::update(['end_at'=>$date]);
         return view('stamp');
+    }
+
+    public function date(){
+        $items=Work::with('rests')->where('created_at',Carbon::today())->get();
     }
 }

@@ -21,7 +21,7 @@
         <td>{{$item->user->name}}</td>
         <td>{{$item->start_at}}</td>
         <td>{{$item->end_at}}</td>
-        <td>{{}}
+        <td>{{$item->}}
 
 
 </body>

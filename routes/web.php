@@ -16,8 +16,9 @@ use App\Http\Controllers\WorkController;
 Route::get('/', [WorkController::class,'index'])->name('index');
 Route::get('/work/add',[WorkController::class,'add']);
 Route::post('work/update',[WorkController::class,'update']);
-Route::post('rest/add',[WorkController::class,'addRest']);
+Route::get('rest/add',[WorkController::class,'addRest']);
 Route::post('rest/update',[WorkController::class,'updateRest']);
+Route::get('/attendance/{}')
 
 Route::get('/dashboard', function () {
     return view('dashboard');

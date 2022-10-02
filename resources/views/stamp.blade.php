@@ -32,7 +32,7 @@
     <form method="post" action="work/update">
       @csrf
       <input type="hidden" name="id" value="{{$item->id}}">
-      @if(isset($is_attendance_start) && !isset($is_rest_end))
+      @if(($is_attendance_start) && !($is_rest_end))
       <a href="/work/update" type="submit" id="workend"  name="end_at">勤務終了</a>
       @else
       <p class="attendance-btn inactive">勤務終了</p>
@@ -41,7 +41,7 @@
     <form method="post" action="/rest/add">
       @csrf
       <input type="hidden" name="work_id" value="{{$item->id}}">
-      @if(isset($is_attendance_start) && !isset($is_rest_end))
+      @if(($is_attendance_start) && !($is_rest_end))
       <a href="/rest/add" class="attendance-btn"  id="reststart" name="start_at">休憩開始</a>
       @else
       <p class="attendance-btn inactive">休憩開始</p>
@@ -50,10 +50,10 @@
     <form method="post" aciton="rest/update">
       @csrf
       <input type="hidden" name="work_id" value="{{$item->id}}">
-      @if(isset($is_attendance_startisset) && isset($is_rest_end))
-      <a href="/rest/end" class="attendance-btn"  id="reststart" name="end_at">休憩開始</a>
+      @if(($is_attendance_start) && ($is_rest_end))
+      <a href="/rest/end" class="attendance-btn"  id="reststart" name="end_at">休憩終了</a>
       @else
-      <p class="attendance-btn inactive">休憩開始</P>
+      <p class="attendance-btn inactive">休憩終了</P>
       @endif
       
     </form>
