@@ -20,33 +20,46 @@ class WorkController extends Controller
 
     public function add(){
         $date=Carbon::now();
-        Work::create(['start_at'=>$date]);
+        Work::create(['start_at'=>$date,'']);
        
         return redirect('/');
         
     }
 
-    public function update(){
+    public function update(Request $request){
         $time=Carbon::now();
-        Work::update(['end_at'=>$date]);
+        Work::update(['end_at'=>$date,]);
         return redirect('/');
     }
 
-    public function addRest(){
+    public function addRest(Request $request){
         $date=Carbon::now();
-        Rest::create(['start_at'=>$date]);
+        $work_id=$request->work_id;
+        Rest::create(['start_at'=>$date,'work_id'=>$work_id]);
         
         return redirect('/');
 
     }
 
-    public function updateRest(){
+    public function updateRest(Request $request){
         $date=Carbon::now();
-        Rest::update(['end_at'=>$date]);
+        $work_id=$request->work_id;
+        Rest::update(['end_at'=>$date,'work_id'=>$work_id]); //挿入するレコードは全て記入しなけれなならない//
         return view('stamp');
     }
 
     public function date(){
-        $items=Work::with('rests')->where('created_at',Carbon::today())->get();
+           
+           $items=Work::with('rests')->where('created_at',$date)->get();
+           $items2=$item->rests;
+           $total_rest=0;
+           foreach($item2 as $items2){
+            $total_rest+=$item2->end_at-$item2->start_at;
+           }
+
+}         
+
+        //表示するページの分岐
     }
-}
+   
+

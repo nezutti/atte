@@ -14,9 +14,9 @@ use App\Http\Controllers\WorkController;
 */
 
 Route::get('/', [WorkController::class,'index'])->name('index');
-Route::get('/work/add',[WorkController::class,'add']);
+Route::post('/work/add',[WorkController::class,'add']);
 Route::post('work/update',[WorkController::class,'update']);
-Route::get('rest/add',[WorkController::class,'addRest']);
+Route::post('rest/add',[WorkController::class,'addRest']);
 Route::post('rest/update',[WorkController::class,'updateRest']);
 Route::get('/attendance',[WorkController::class,'date']);
 

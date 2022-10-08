@@ -29,7 +29,7 @@
       @endif
     </form>
     
-    <form method="post" action="work/update">
+    <form method="post" action="/work/update">
       @csrf
       <input type="hidden" name="id" value="{{$item->id}}">
       @if(($is_attendance_start) && !($is_rest_end))
@@ -47,7 +47,7 @@
       <p class="attendance-btn inactive">休憩開始</p>
       @endif
     </form>
-    <form method="post" aciton="rest/update">
+    <form method="post" aciton="/rest/update">
       @csrf
       <input type="hidden" name="work_id" value="{{$item->id}}">
       @if(($is_attendance_start) && ($is_rest_end))
