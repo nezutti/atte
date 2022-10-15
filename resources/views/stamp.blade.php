@@ -22,7 +22,7 @@
     <form method="post" action="/work/add">
       @csrf
       @if(!($is_attendance_start))
-      <a href="/work/add" class="attendance-btn">勤務開始</a>
+      <button type="submit"  class="attendance-btn">勤務開始</a>
       
       @else
       <p class="attendance-btn inactive">勤務開始</P>
@@ -33,7 +33,7 @@
       @csrf
       <input type="hidden" name="id" value="{{$item->id}}">
       @if(($is_attendance_start) && !($is_rest_end))
-      <a href="/work/update" type="submit" id="workend"  name="end_at">勤務終了</a>
+      <button type="submit" id="workend"  name="end_at" value="勤務終了">
       @else
       <p class="attendance-btn inactive">勤務終了</p>
       @endif
@@ -42,16 +42,18 @@
       @csrf
       <input type="hidden" name="work_id" value="{{$item->id}}">
       @if(($is_attendance_start) && !($is_rest_end))
-      <a href="/rest/add" class="attendance-btn"  id="reststart" name="start_at">休憩開始</a>
+      <button type="submit" class="attendance-btn"  id="reststart" name="start_at" value="休憩開始">
       @else
-      <p class="attendance-btn inactive">休憩開始</p>
+      <p class="attendance-btn inactive">休憩開始</p> 
       @endif
     </form>
     <form method="post" aciton="/rest/update">
       @csrf
       <input type="hidden" name="work_id" value="{{$item->id}}">
       @if(($is_attendance_start) && ($is_rest_end))
-      <a href="/rest/end" class="attendance-btn"  id="reststart" name="end_at">休憩終了</a>
+      <button type="submit" class="attendance-btn"  id="reststart" name="start_at" value="休憩終了">
+
+      
       @else
       <p class="attendance-btn inactive">休憩終了</P>
       @endif

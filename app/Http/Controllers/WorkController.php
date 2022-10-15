@@ -51,6 +51,10 @@ class WorkController extends Controller
     public function date(){
            
            $items=Work::with('rests')->where('created_at',$date)->get();
+           foreach($items as $item){
+            $items2=$item->rests;
+
+           }
            $items2=$item->rests;
            $total_rest=0;
            foreach($item2 as $items2){
